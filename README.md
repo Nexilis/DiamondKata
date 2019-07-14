@@ -1,3 +1,6 @@
+Based on:
+"F# property based testing introduction" by Mark Seemann on Pluralsight
+
 The only valid inputs are A-Z
 
 Examples:
@@ -23,3 +26,6 @@ C   C
   A
 
 It's hard to implement using Example-Driven Development, used Property Based Testing instead.
+
+Run using:
+$ dotnet test

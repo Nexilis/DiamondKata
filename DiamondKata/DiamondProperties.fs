@@ -1,5 +1,6 @@
 ﻿module Barteklu.Kata.DiamondProperties
 
+open Barteklu.Kata.StringFunctions
 open System
 open FsCheck
 open FsCheck.Xunit
@@ -17,3 +18,10 @@ let ``Diamond is not-empty`` (letter: char) =
   printf "%c" letter
   let actual = Diamond.make letter
   not (String.IsNullOrWhiteSpace actual)
+
+[<DiamondProperty>]
+let ``First row contains 'A`` (letter: char) =
+  let actual = Diamond.make letter
+
+  let rows = split actual
+  rows |> Seq.head |> trim = "A"
