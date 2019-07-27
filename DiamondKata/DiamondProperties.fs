@@ -25,3 +25,10 @@ let ``First row contains 'A`` (letter: char) =
 
   let rows = split actual
   rows |> Seq.head |> trim = "A"
+
+[<DiamondProperty>]
+let ``All rows must have a symmetric contour`` (letter: char) =
+  let actual = Diamond.make letter
+
+  let rows = split actual
+  rows |> Array.forall (fun r -> (leadingSpaces r) = (trailingSpaces r))
