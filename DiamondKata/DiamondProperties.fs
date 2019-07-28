@@ -46,3 +46,24 @@ let ``Top of figure has correct letters in correct order`` (letter: char) =
       |> Seq.map Seq.head
       |> Seq.toList
   expected = firstNonWhiteSpaceLetters
+
+[<DiamondProperty>]
+let ``Figure is symmetric around the horizontal axis`` (letter: char) =
+  let actual = Diamond.make letter
+  Diamond.print letter actual
+
+  let rows = split actual
+  let topRows =
+    rows
+    |> Seq.takeWhile (fun x -> not (x.Contains(string letter)))
+    |> Seq.toList
+  let bottomRows =
+    rows
+    |> Seq.skipWhile (fun x -> not (x.Contains(string letter)))
+    |> Seq.skip 1
+    |> Seq.toList
+    |> List.rev
+  printfn "\ntopRows: %s" (List.reduce ( + ) topRows)
+  printfn "\nbottomRows: %s" (List.reduce ( + ) bottomRows)
+
+  topRows = bottomRows
