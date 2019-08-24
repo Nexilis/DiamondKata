@@ -7,7 +7,13 @@ let print (letter: char) (result: string) =
 let make letter =
   let makeLine letterCount letter =
     let padding = String(' ', letterCount - 1)
-    sprintf "%s%c%s" padding letter padding
+    match letter with
+    | 'A' -> sprintf "%s%c%s" padding letter padding
+    | _   ->
+      let left = sprintf "%c%s" letter padding |> Seq.toList
+      left @ (left |> List.rev |> List.tail)
+      |> List.map string
+      |> List.reduce (sprintf "%s%s")
 
   let letters = ['A' .. letter]
   let result =
