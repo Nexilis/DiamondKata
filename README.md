@@ -1,31 +1,52 @@
-Based on:
-"F# property based testing introduction" by Mark Seemann on Pluralsight
+#Implementation of DiamondKata
 
-The only valid inputs are A-Z
+Based on: **"F# property based testing introduction"** by Mark Seemann on Pluralsight
+
+The only valid inputs are letters `A-Z`
 
 Examples:
-input:
-A
-output:
-A
+
+**1.**
 
 input:
-B
+
+`A`
+
 output:
+
+`A`
+
+**2.**
+
+input:
+
+`B`
+
+output:
+
+```
  A
 B B
  A
+```
+
+**3.**
 
 input:
-C
+
+`C`
+
 output:
+
+```
   A
  B B
 C   C
  B B
   A
+```
 
-It's hard to implement using Example-Driven Development, used Property Based Testing instead.
+It's hard to implement using Example-Driven Development, so Property Based Testing is used instead.
 
 Run using:
-$ dotnet test
+`$ dotnet test`
