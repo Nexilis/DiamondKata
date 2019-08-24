@@ -1,4 +1,4 @@
-#Implementation of DiamondKata
+# Implementation of DiamondKata
 
 Based on: **"F# property based testing introduction"** by Mark Seemann on Pluralsight
 
